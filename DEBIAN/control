@@ -1,0 +1,13 @@
+Package: pinguybuilder-yukkuri
+Version: 5.2-1.2.3.3
+Architecture: all
+Maintainer: Hayate Nakamura <is01.njb@gmail.com>
+Installed-Size: 12084
+Depends: memtest86+, coreutils, dialog, xorriso, findutils, bash, passwd, squashfs-tools, casper, rsync, mount, eject, libdebian-installer4, discover1 | discover, laptop-detect, syslinux, syslinux-common, aufs-tools | unionfs-fuse, dpkg-dev, policykit-1, plymouth-x11, xterm, gedit | leafpad | mousepad | pluma | featherpad | kate | gedit
+Section: utils
+Provides: pinguybuilder
+Conflicts: pinguybuilder
+Priority: optional
+Homepage: https://github.com/jin-asanami/pinguy-builder
+Description: Script to create a livecd of an installed *buntu system. Everything is operated via the systems main menu.
+ This script creates a livecd of the installed system and works with *buntu systems. Everything is operated via the systems main menu. You can either make a distributable livecd or a backup of your system.

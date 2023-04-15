@@ -1,0 +1,75 @@
+#!/bin/bash
+
+# Options used for xterm
+XTOPTS="-fa 'Monospace' -fs 10"
+
+if [ "$1" = "config" ]; then
+xterm $XTOPTS -T "Check/modify PB settings as admin" -e 'echo "";
+echo "The PinguyBuilder settings will be opened in a GUI editor."; 
+echo "";  
+echo "Please check and modify as needed."; 
+echo "Then SAVE THE CHANGES and close the editor."; 
+echo "";  
+sudo $(which featherpad || which leafpad || which mousepad || which kate || which pluma || which gedit) /etc/PinguyBuilder.conf'
+fi
+
+if [ "$1" = "backup" ]; then
+xterm $XTOPTS -T "Backup livecd/dvd (ISO-file) including your user dat" -e 'echo ""; 
+echo "This will create a  backup livecd/dvd (ISO-file) of the complete system including your user data."; 
+echo ""; 
+echo "It is necessary to close all other windows and unmount any network shares while running PinguyBuilder Backup."; 
+echo ""; 
+echo "Please do so now and then press Enter when you are ready to continue."; 
+echo ""; 
+read x; 
+sudo PinguyBuilder backup'
+fi
+
+if [ "$1" = "dist" ]; then
+xterm $XTOPTS -T "Backup livecd/dvd (ISO-file) without your user data" -e 'echo ""; 
+echo "This will create a distributable livecd/dvd (ISO-file) of the system without user data."; 
+echo ""; 
+echo "It is necessary to close all other windows and unmount any network shares while running PinguyBuilder Backup."; 
+echo ""; 
+echo "Please do so now and then press Enter when you are ready to continue."; 
+echo ""; 
+read x; 
+sudo PinguyBuilder dist'
+fi
+
+if [ "$1" = "dist-cdfs" ]; then
+xterm $XTOPTS -T "Backup just a filesystem-copy without your user data" -e 'echo ""; 
+echo "This will make a distributable copy of the system without user data (just a "; 
+echo "filesystem-copy one can modify before making a livecd/dvd)"; 
+echo ""; 
+echo "It is necessary to close all other windows and unmount any network shares while running PinguyBuilder Backup."; 
+echo ""; 
+echo "Please do so now and then press Enter when you are ready to continue."; 
+echo ""; 
+read x; 
+sudo PinguyBuilder dist cdfs'
+fi
+
+if [ "$1" = "dist-iso" ]; then
+xterm   -fa 'Monospace' -fs 10 -T "Create a distributable livecd/dvd (ISO) of the filesystem-copy" -e 'echo ""; 
+echo "This will create a distributable livecd/dvd (ISO-file) of the (already modified) filesystem-copy."; 
+echo ""; 
+echo "It is necessary to close all other windows and unmount any network shares while running PinguyBuilder Backup."; 
+echo ""; 
+echo "Please do so now and then press Enter when you are ready to continue."; 
+echo ""; 
+read x; 
+sudo PinguyBuilder dist iso'
+fi
+
+if [ "$1" = "clean" ]; then
+xterm $XTOPTS -T "Cleaning up temporary files of PinguyBuilder" -e 'echo ""; 
+echo "This will clean up the temporary files of PinguyBuilder working directory."; 
+echo ""; 
+echo "Hit Enter to continue."; 
+echo ""; 
+read x; 
+sudo PinguyBuilder clean'
+fi
+
+exit
